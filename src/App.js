@@ -12,6 +12,5 @@ if (!__DEV__) {
         },
     };
 }
-console.log(global);
 StatusBar.setBarStyle('light-content',true);
 AppRegistry.registerComponent('ReactNativeRedux', () => Main);

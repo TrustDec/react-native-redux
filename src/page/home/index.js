@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import ReactNative from 'react-native';
-const {
+import {
     StyleSheet,
     Text,
     View,
     Button,
     Image
-} = ReactNative
+} from 'react-native';
+//import { userToken } from '../../constant/TestUserToken';
 export default class Home extends Component {
     render(){
         return(
