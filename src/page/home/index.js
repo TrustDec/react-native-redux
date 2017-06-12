@@ -6,12 +6,13 @@ import {
     Button,
     Image
 } from 'react-native';
+import App from '../../components/App';
 //import { userToken } from '../../constant/TestUserToken';
 export default class Home extends Component {
     render(){
         return(
             <View style={styles.container}>
-               
+               <App/>
             </View>
         );
     }

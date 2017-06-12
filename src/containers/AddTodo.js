@@ -1,5 +1,32 @@
+import React, { Component, PropTypes } from 'react'
 import { View,Text,TextInput } from 'react-native';
-import { addTodo } from "../actions";
+export default class AddTodo extends Component {
+  render() {
+    return (
+      <View style={{flexDirection:'row',width:'100%'}}>
+        <TextInput ref={e=>this.input=e} style={{width:200,height: 40, borderColor: 'gray', borderWidth: 1}}/>
+        <Text onPress={(e) => this.handleClick(e)}>
+          Add
+        </Text>
+      </View>
+    )
+  }
+
+  handleClick(e) {
+    const text = this.input._lastNativeText.trim();
+    this.props.onAddClick(text);
+    this.input._lastNativeText="";
+    // const node = this.refs.input
+    // const text = node.value.trim()
+    // this.props.onAddClick(text)
+    // node.value = ''
+  }
+}
+
+AddTodo.propTypes = {
+  onAddClick: PropTypes.func.isRequired
+}
+/*import { addTodo } from "../actions";
 import { connect } from "react-redux";
 let input;
 function _onPress(dispatch){
@@ -16,4 +43,4 @@ let AddTodo = ({dispatch}) => {
     );
 }
 AddTodo = connect()(AddTodo)
-export default AddTodo
+export default AddTodo*/

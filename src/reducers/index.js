@@ -1,8 +1,47 @@
-import { combineReducers } from "redux";
-import Todos from "./todo";
-import VisibityFilter from './visibityFilter';
-//console.log(Todos,VisibityFilter);
-export default const TodoApp = combineReducers({
-    Todos,
-    VisibityFilter
-});
+import { combineReducers } from 'redux'
+import { ADD_TODO, COMPLETE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters } from '../actions'
+const { SHOW_ALL } = VisibilityFilters
+
+function visibilityFilter(state = SHOW_ALL, action) {
+  switch (action.type) {
+    case SET_VISIBILITY_FILTER:
+      return action.filter
+    default:
+      return state
+  }
+}
+
+function todos(state = [], action) {
+  switch (action.type) {
+    case ADD_TODO:
+      return [
+        ...state,
+        {
+          text: action.text,
+          completed: false
+        }
+      ]
+     case COMPLETE_TODO:
+            // Object.assign是ES6新方法：是把state与{ completed: !state.completed }进行合并到第一个 {} 对象里面
+            console.log([Object.assign({},state,{
+                        completed: !state[action.index].completed
+                })])
+            return [ 
+                ...state.slice(0, action.index),
+                Object.assign({},state,{
+                        completed: !state[action.index].completed
+                }),
+                 ...state.slice(action.index + 1)
+            ]
+            
+    default:
+      return state
+  }
+}
+
+const todoApp = combineReducers({
+  visibilityFilter,
+  todos
+})
+
+export default todoApp
