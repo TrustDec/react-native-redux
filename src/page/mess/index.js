@@ -5,13 +5,26 @@ const {
     Text,
     View,
     Button,
-    Image
+    Image,
+    Animated,
+    Easing
 } = ReactNative
 export default class Mess extends Component {
+    componentWillMount(){
+        this.animatedValue = new Animated.Value(100);
+    }
+    componentDidMount(){
+        Animated.timing(this.animatedValue,{
+            toValue: 20,
+            duration: 3000,
+            exsing:Easing.bounce
+        }).start();
+    }
     render(){
+        const animatedStyle = { height:this.animatedValue };
         return(
             <View style={styles.container}>
-                <Text> Mess. </Text>
+                <Animated.View style={[styles.box,animatedStyle]}/>
             </View>
         );
     }
@@ -22,4 +35,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    box:{
+        width:100,
+        height:100,
+        backgroundColor:'red'
+    }
 });

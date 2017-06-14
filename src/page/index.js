@@ -12,13 +12,13 @@ import Home from './home';
 import Mess from './mess';
 import User from './user';
 export default Main = TabNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: ({navigation})=>TabOptions('Home','home',navigation)
-  },
   Mess: {
     screen: Mess,
     navigationOptions: ({navigation})=>TabOptions('Mess','message-text',navigation)
+  },
+  Home: {
+    screen: Home,
+    navigationOptions: ({navigation})=>TabOptions('Home','home',navigation)
   },
   User: {
     screen: User,
