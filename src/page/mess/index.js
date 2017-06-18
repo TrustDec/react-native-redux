@@ -1,43 +1,49 @@
 import React, { Component } from 'react';
 import ReactNative from 'react-native';
+import Swiper from '../../components/Swiper';
 const {
     StyleSheet,
     Text,
     View,
     Button,
     Image,
-    Animated,
-    Easing
-} = ReactNative
+} = ReactNative;
 export default class Mess extends Component {
-    componentWillMount(){
-        this.animatedValue = new Animated.Value(100);
-    }
-    componentDidMount(){
-        Animated.timing(this.animatedValue,{
-            toValue: 20,
-            duration: 3000,
-            exsing:Easing.bounce
-        }).start();
-    }
     render(){
-        const animatedStyle = { height:this.animatedValue };
         return(
             <View style={styles.container}>
-                <Animated.View style={[styles.box,animatedStyle]}/>
+                <Swiper style={styles.swiper}>
+                    <View style={styles.page1}></View>
+                    <View style={styles.page2}></View>
+                    <View style={styles.page3}></View>
+                    <View style={styles.page1}></View>
+                    <View style={styles.page2}></View>
+                    <View style={styles.page3}></View>
+                </Swiper>
             </View>
         );
     }
 } 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        //justifyContent: 'center',
+        alignItems: 'stretch',
     },
-    box:{
-        width:100,
-        height:100,
+    swiper: {
+        //backgroundColor:'black'
+    },
+    page1: {
+        flex:1,
+        backgroundColor:'yellow'
+    },
+    page2: {
+        flex:1,
         backgroundColor:'red'
+    },
+    page3: {
+        flex:1,
+        backgroundColor:'blue'
     }
 });

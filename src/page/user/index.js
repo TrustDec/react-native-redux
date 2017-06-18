@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactNative from 'react-native';
+import App from '../../components/App';
 const {
     StyleSheet,
     Text,
@@ -7,11 +8,12 @@ const {
     Button,
     Image
 } = ReactNative
+
 export default class User extends Component {
     render(){
         return(
             <View style={styles.container}>
-                <Text> User. </Text>
+                <App/>
             </View>
         );
     }
