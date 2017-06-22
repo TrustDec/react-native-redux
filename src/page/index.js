@@ -53,6 +53,7 @@ export default Main = TabNavigator({
   animationEnabled:false,
 });
 const TabOptions = (tabBarTitle,normalImage,navigation) => {
+  global.NavRoute = navigation;
   let {state,goBack} = navigation;
   const tabBarLabel = tabBarTitle;
   //const tabBarVisible = false;
