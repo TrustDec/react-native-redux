@@ -12,9 +12,10 @@ const {
     ScrollView
 } = ReactNative
 let img = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498159716241&di=07db5f36897d5a71e4d44b2afcb0693a&imgtype=0&src=http%3A%2F%2Fimg.25pp.com%2Fuploadfile%2Fapp%2Ficon%2F20161013%2F1476340374780065.jpg';
-export default class Test extends Component {
+
+export default class CollapsibleHeaderBar extends Component {
     static navigationOptions = {
-        headerTitle: 'TestContent',
+        headerTitle: 'A collapsible header bar',
         tabBarVisible: false,
         headerTitleStyle:{ alignSelf:'center',color:'#fff'},
         headerStyle:{backgroundColor:'#2C3E51'},
@@ -22,22 +23,23 @@ export default class Test extends Component {
     componentWillMount(){
         this.animated = new Animated.Value(0);
     }
+    //inputRange
     render(){
         const hideImageInterpolate = this.animated.interpolate({
-            inputRange: [0, 250],
-            outputRange: [50, 0],
+            inputRange: [0, 150],
+            outputRange: [30, 0],
             extrapolate: "clamp",
         });
         const fontInterpolate = this.animated.interpolate({
-            inputRange: [0, 250],
+            inputRange: [0, 150],
             outputRange: [24, 30],
         });
         const opacityInterpolate = this.animated.interpolate({
-            inputRange: [0, 250],
+            inputRange: [0, 150],
             outputRange: [1, 0],
         });
         const collapseInterpolate = this.animated.interpolate({
-            inputRange: [0, 250],
+            inputRange: [0, 150],
             outputRange: [50, 0],
             extrapolate: "clamp",
         });
@@ -53,7 +55,7 @@ export default class Test extends Component {
             height: collapseInterpolate
         }
         return(
-            <View style={styles.container}>
+            <View>
                 <View style={styles.container}>
                     <Animated.Image source={{uri:img}} style={[styles.image,imageStyle]}/>
                     <Animated.Text style={[styles.titleStyle,fontStyle]}>Egghead</Animated.Text>
@@ -68,7 +70,7 @@ export default class Test extends Component {
                 </View>
                 <View style={styles.scrollView}>
                     <ScrollView
-                    style={{flex:1,backgroundColor:'red'}}
+                        style={{flex:1,backgroundColor:'green'}}
                         scrollEventThrottle={16}
                         onScroll={Animated.event([
                             { nativeEvent: { contentOffset:{y: this.animated } } }
@@ -112,9 +114,11 @@ const styles = StyleSheet.create({
         backgroundColor:'#188eee'
     },
     fakeContent:{
-
+        justifyContent:'center',
+        alignItems:'center',
     },
     fakeText:{
-
+        color:'#fff',
+        fontSize:17
     },
 });

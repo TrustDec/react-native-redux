@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactNative from 'react-native';
 import Swiper from '../../components/Swiper';
-import Test from './component/Test';
+import CollapsibleHeaderBar from './component/CollapsibleHeaderBar';
+import ExplodingHeartButton from './component/ExplodingHeartButton';
 import ListCase from '../../components/ListCase';
 import { StackNavigator } from 'react-navigation';
 const {
@@ -61,11 +62,20 @@ const styles = StyleSheet.create({
 });
 const ListContent = [
     {
-        title:"one",
-        onPress:"Test"
+        title:"A collapsible header bar",
+        onPress:"CollapsibleHeaderBar"
+    },
+    {
+        title:"create an exploding heart button",
+        onPress:"ExplodingHeartButton"
+    },
+    {
+        title:'A  horizontal parallax scrollview',
+        onPress:"ExplodingHeartButton"
     }
 ];
 export default  Mess = StackNavigator({
     Mess: {screen: MessContent},
-    Test: { screen: Test },
+    CollapsibleHeaderBar: { screen: CollapsibleHeaderBar },
+    ExplodingHeartButton: { screen: ExplodingHeartButton }
 });
