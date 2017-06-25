@@ -66,7 +66,7 @@ const ListContent = [
         onPress:"CollapsibleHeaderBar"
     },
     {
-        title:"create an exploding heart button",
+        title:"A exploding heart button",
         onPress:"ExplodingHeartButton"
     },
     {

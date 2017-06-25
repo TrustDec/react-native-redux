@@ -40,7 +40,7 @@ const gettransformationAnimation = (animation,scale,y,x,rotate,opacity) => {
 };
 export default class ExplodingHeartButton extends Component {
     static navigationOptions = {
-        headerTitle: 'A horizontal parallax scrollview',
+        headerTitle: 'A exploding heart button',
         tabBarVisible: false,
         headerTitleStyle:{ alignSelf:'center',color:'#fff'},
         headerStyle:{ backgroundColor:'#2C3E51' },
