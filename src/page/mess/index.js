@@ -3,6 +3,7 @@ import ReactNative from 'react-native';
 import Swiper from '../../components/Swiper';
 import CollapsibleHeaderBar from './component/CollapsibleHeaderBar';
 import ExplodingHeartButton from './component/ExplodingHeartButton';
+import FloatingButton from './component/FloatingButton';
 import WebViewPlay from './component/WebViewPlay';
 import ListCase from '../../components/ListCase';
 import { StackNavigator } from 'react-navigation';
@@ -73,11 +74,16 @@ const ListContent = [
     {
         title:'A  horizontal parallax scrollview',
         onPress:"WebViewPlay"
+    },
+    {
+        title:"A floating action button springy menu",
+        onPress:"FloatingButton"
     }
 ];
 export default  Mess = StackNavigator({
     Mess: {screen: MessContent},
     CollapsibleHeaderBar: { screen: CollapsibleHeaderBar },
     ExplodingHeartButton: { screen: ExplodingHeartButton },
+    FloatingButton: { screen: FloatingButton },
     WebViewPlay: { screen: WebViewPlay }
 });
