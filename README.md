@@ -11,7 +11,7 @@
 </div>
 
 <div style="margin:0,padding:0px;float:right">
-    <div>exploding heart button</div>
+    <div>floating action button springy menu</div>
     <img src="./Examples/FloatingButton.gif">
 </div>
 
