@@ -3,6 +3,7 @@ import ReactNative from 'react-native';
 import Swiper from '../../components/Swiper';
 import CollapsibleHeaderBar from './component/CollapsibleHeaderBar';
 import ExplodingHeartButton from './component/ExplodingHeartButton';
+import WebViewPlay from './component/WebViewPlay';
 import ListCase from '../../components/ListCase';
 import { StackNavigator } from 'react-navigation';
 const {
@@ -71,11 +72,12 @@ const ListContent = [
     },
     {
         title:'A  horizontal parallax scrollview',
-        onPress:"ExplodingHeartButton"
+        onPress:"WebViewPlay"
     }
 ];
 export default  Mess = StackNavigator({
     Mess: {screen: MessContent},
     CollapsibleHeaderBar: { screen: CollapsibleHeaderBar },
-    ExplodingHeartButton: { screen: ExplodingHeartButton }
+    ExplodingHeartButton: { screen: ExplodingHeartButton },
+    WebViewPlay: { screen: WebViewPlay }
 });
