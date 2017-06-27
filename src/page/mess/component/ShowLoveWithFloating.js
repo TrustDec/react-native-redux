@@ -17,7 +17,7 @@ function getRandomInt(min,max){
 }
 export default class ShowLoveWithFloating extends Component {
     static navigationOptions = {
-        headerTitle: 'A floating action button springy menu',
+        headerTitle: 'A tap to show love with a floating heart animation',
         tabBarVisible: false,
         headerTitleStyle:{ alignSelf:'center',color:'#fff'},
         headerStyle:{ backgroundColor:'#2C3E51' },

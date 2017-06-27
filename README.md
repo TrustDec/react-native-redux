@@ -20,3 +20,8 @@
     <img src="./Examples/ShowLoveWithFloating.gif">
 </div>
 
+<div style="margin:0,padding:0px;float:right">
+    <div>A horizontal parallax scrollview</div>
+    <img src="./Examples/HorizontalParallax.gif">
+</div>
+

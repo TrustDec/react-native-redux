@@ -5,6 +5,7 @@ import CollapsibleHeaderBar from './component/CollapsibleHeaderBar';
 import ExplodingHeartButton from './component/ExplodingHeartButton';
 import FloatingButton from './component/FloatingButton';
 import ShowLoveWithFloating from './component/ShowLoveWithFloating';
+import HorizontalParallax from './component/HorizontalParallax';
 import WebViewPlay from './component/WebViewPlay';
 import ListCase from '../../components/ListCase';
 import { StackNavigator } from 'react-navigation';
@@ -81,6 +82,10 @@ const ListContent = [
         onPress:"ShowLoveWithFloating"
     },
     {
+        title:"A horizontal parallax scrollview",
+        onPress:"HorizontalParallax"
+    },
+    {
         title:'A  WebViewPlay test',
         onPress:"WebViewPlay"
     },
@@ -91,5 +96,6 @@ export default  Mess = StackNavigator({
     ExplodingHeartButton: { screen: ExplodingHeartButton },
     FloatingButton: { screen: FloatingButton },
     ShowLoveWithFloating: { screen: ShowLoveWithFloating },
+    HorizontalParallax: { screen: HorizontalParallax},
     WebViewPlay: { screen: WebViewPlay }
 });
