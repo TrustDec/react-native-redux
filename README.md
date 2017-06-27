@@ -15,3 +15,8 @@
     <img src="./Examples/FloatingButton.gif">
 </div>
 
+<div style="margin:0,padding:0px;float:right">
+    <div>A tap to show love with a floating heart animation</div>
+    <img src="./Examples/ShowLoveWithFloating.gif">
+</div>
+

@@ -4,6 +4,7 @@ import Swiper from '../../components/Swiper';
 import CollapsibleHeaderBar from './component/CollapsibleHeaderBar';
 import ExplodingHeartButton from './component/ExplodingHeartButton';
 import FloatingButton from './component/FloatingButton';
+import ShowLoveWithFloating from './component/ShowLoveWithFloating';
 import WebViewPlay from './component/WebViewPlay';
 import ListCase from '../../components/ListCase';
 import { StackNavigator } from 'react-navigation';
@@ -72,18 +73,23 @@ const ListContent = [
         onPress:"ExplodingHeartButton"
     },
     {
-        title:'A  horizontal parallax scrollview',
-        onPress:"WebViewPlay"
-    },
-    {
         title:"A floating action button springy menu",
         onPress:"FloatingButton"
-    }
+    },
+    {
+        title:"A tap to show love with a floating heart animation",
+        onPress:"ShowLoveWithFloating"
+    },
+    {
+        title:'A  WebViewPlay test',
+        onPress:"WebViewPlay"
+    },
 ];
 export default  Mess = StackNavigator({
     Mess: {screen: MessContent},
     CollapsibleHeaderBar: { screen: CollapsibleHeaderBar },
     ExplodingHeartButton: { screen: ExplodingHeartButton },
     FloatingButton: { screen: FloatingButton },
+    ShowLoveWithFloating: { screen: ShowLoveWithFloating },
     WebViewPlay: { screen: WebViewPlay }
 });
