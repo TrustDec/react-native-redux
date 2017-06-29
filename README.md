@@ -21,7 +21,11 @@
 </div>
 
 <div style="margin:0,padding:0px;float:right">
-    <div>A horizontal parallax scrollview</div>
+    <div>A horizontal parallax scrollview one</div>
     <img src="./Examples/HorizontalParallax.gif">
-</div>
+</div
 
+<div style="margin:0,padding:0px;float:right">
+    <div>A horizontal parallax scrollview two</div>
+    <img src="./Examples/HorizontalParallax1.gif">
+</div>

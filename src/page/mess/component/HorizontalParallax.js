@@ -47,8 +47,15 @@ export default class HorizontalParallax extends Component {
     constructor(props){
         super(props);
         this.state = {
-            animatedScroll: new Animated.Value(0)
+            animatedScroll: new Animated.Value(0),
+            scrollEnabled: true
         }
+        this.handleFocus = this.handleFocus.bind(this);
+    }
+    handleFocus(focused){
+        this.setState({
+            scrollEnabled: !focused
+        });
     }
     render(){
         return(
@@ -56,18 +63,17 @@ export default class HorizontalParallax extends Component {
                 <ScrollView
                     pagingEnabled
                     horizontal
+                    scrollEnabled={this.state.scrollEnabled}
                     scrollEventThrottle={16}
-                    onScroll={
-                        Animated.event([
-                            {
-                                nativeEvent: {
-                                    contentOffset: {
-                                        x: this.state.animatedScroll
-                                    }
+                    onScroll={Animated.event(
+                        [{
+                            nativeEvent: {
+                                contentOffset: {
+                                    x: this.state.animatedScroll
                                 }
                             }
-                        ])
-                    }
+                        }]
+                    )}
                 >
                     {
                         Images.map((image,i)=>{
@@ -75,6 +81,8 @@ export default class HorizontalParallax extends Component {
                                 key={i} 
                                 {...image}
                                 translateX={getInterpolate(this.state.animatedScroll, i, Images.length)}
+                                onFocus={this.handleFocus}
+                                focused={this.state.scrollEnabled}
                             />
                         })
                     }
@@ -85,24 +93,77 @@ export default class HorizontalParallax extends Component {
     }
 }
 class Moment extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            scale: new Animated.Value(1)
+        }
+
+    }
+    componentWillMount(){
+        this.bgFadeIntterpolate = this.state.scale.interpolate({
+            inputRange: [.9,1],
+            outputRange: ['rgba(0,0,0,.3)','rgba(0,0,0,0)']
+        });
+        this.textFade = this.state.scale.interpolate({
+            inputRange: [.9, 1],
+            outputRange: [0, 1]
+        });
+        this.calloutTranslate = this.state.scale.interpolate({
+            inputRange: [.9, 1],
+            outputRange: [0, 150]
+        });
+    }
+    handlePress = () => {
+
+        if (this.props.focused) {
+            Animated.timing(this.state.scale,{
+                toValue: 1,
+                duration: 300
+            }).start(()=> this.props.onFocus(true));
+            return
+        }
+        Animated.timing(this.state.scale,{
+            toValue: .9,
+            duration: 300
+        }).start(()=> this.props.onFocus(false));
+    }
     render(){
         const animatedStyle = {
             transform: [
-                { translateX: this.props.translateX }
+                { translateX: this.props.translateX },
+                { scale: this.state.scale }
             ]
-        };
+        }
+
+        const bgFadeStyle = {
+            backgroundColor: this.bgFadeIntterpolate
+        }
+        const textFadeStyle = {
+            opacity: this.textFade
+        }
+        const calloutStyle = {
+            transform: [{ translateY: this.calloutTranslate }]
+        }
         return(
             <View style={styles.container}>
-                <Animated.Image
-                    source={this.props.image}
-                    style={[styles.image,animatedStyle]}
-                    resizeMode="cover"
-                />
-                <View style={[StyleSheet.absoluteFill,styles.center]}>
-                    <View style={styles.textWrap}>
-                        <Text style={styles.title}>{this.props.title}</Text>
-                    </View>
-                </View>
+                    <Animated.Image
+                        source={this.props.image}
+                        style={[styles.image,animatedStyle]}
+                        resizeMode="cover"
+                    />
+                    <TouchableWithoutFeedback onPress={this.handlePress}>
+                        <Animated.View style={[StyleSheet.absoluteFill,styles.center,bgFadeStyle]}>
+                            <Animated.View style={[styles.textWrap,textFadeStyle]}>
+                                <Text style={styles.title}>{this.props.title}</Text>
+                            </Animated.View>
+                        </Animated.View>
+                    </TouchableWithoutFeedback>
+                    <Animated.View style={[styles.callout,calloutStyle]}>
+                        <View>
+                            <Text style={styles.title}>{this.props.title}</Text>
+                        </View>
+                    </Animated.View>
             </View>
         );
     }
@@ -141,5 +202,14 @@ const styles = StyleSheet.create({
         fontSize:30,
         color:'#fff',
         textAlign:'center'
+    },
+    callout: {
+        height: 150,
+        backgroundColor: "rgba(0,0,0,.5)",
+        justifyContent: 'center',
+        position: 'absolute',
+        bottom: 0,
+        right: 0,
+        left: 0
     }
 });
